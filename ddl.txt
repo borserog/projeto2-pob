@@ -1,0 +1,4 @@
+CREATE TABLE cliente (ID  SERIAL NOT NULL, cpf VARCHAR(255), data_nascimento DATE, nome VARCHAR(255), PRIMARY KEY (ID))
+CREATE INDEX i_cpf ON cliente (cpf)
+CREATE TABLE conta (ID  SERIAL NOT NULL, numero VARCHAR(255), saldo FLOAT, VERSION BIGINT, titular_id BIGINT, PRIMARY KEY (ID))
+ALTER TABLE conta ADD CONSTRAINT FK_conta_titular_id FOREIGN KEY (titular_id) REFERENCES cliente (ID)
